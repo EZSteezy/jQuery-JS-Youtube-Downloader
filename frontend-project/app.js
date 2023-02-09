@@ -58,7 +58,7 @@ function getShowName() {
         jQuery('<div/>', {
           id: 'dlname',
           class: 'dlclass' + i.toString(),
-          text: 'click to download'
+          text: 'click here to download'
         }).appendTo($('#showname' + i.toString()));
 
         $(".dlclass" + i.toString()).click(function () {
