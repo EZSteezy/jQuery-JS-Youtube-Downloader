@@ -1,5 +1,4 @@
 let inputStr;
-
 $('#submitBtn').on('click', getStr);
 
 function getStr() {
@@ -48,18 +47,20 @@ function getShowName() {
           text: 'watch here...'
         }).appendTo($('#showname' + i.toString()));
 
-        $('#morename' + i.toString()).contents().wrap('<a href=https://www.youtube.com/watch?v=' + results.contents[i]['video']['videoId'] + '"></a>');
+        $('#morename' + i.toString()).contents().wrap('<a href=https://www.youtube.com/watch?v=' + results.contents[i]['video']['videoId'] + '" target="_blank"></a>');
 
         var img = $('<img />', {
           id: 'imgid',
           src: results.contents[i]['video']['thumbnails'][0]['url']
         }); img.appendTo($('#showname' + i.toString()));
 
-        jQuery('<div/>', {
+        jQuery('<a/>', {
+          href: '#',
           id: 'dlname',
-          class: 'dlclass' + i.toString(),
-          text: 'click here to download'
-        }).appendTo($('#showname' + i.toString()));
+          class: 'dlclass' + i.toString()
+        })
+          .text('download')
+          .appendTo($('#showname' + i.toString()));
 
         $(".dlclass" + i.toString()).click(function () {
           const videoId = results.contents[i]['video']['videoId'];
@@ -67,6 +68,7 @@ function getShowName() {
           return false;
         });
       });
+      
       function getDownload(videoId) {
         const settings2 = {
           "async": true,
